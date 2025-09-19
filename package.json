@@ -1,15 +1,14 @@
 {
-  "name": "xianmalik-cv",
+  "name": "xianmalik-resume",
   "version": "1.0.0",
   "description": "XeLaTeX CV/Resume with automated build scripts",
   "scripts": {
-    "build": "./build.sh",
-    "watch": "./watch.sh",
-    "clean": "./clean.sh",
-    "dev": "./watch.sh",
-    "rebuild": "npm run clean && npm run build"
+    "dev": "scripts/watch.sh",
+    "watch": "scripts/watch.sh",
+    "build": "scripts/build.sh",
+    "clean": "scripts/clean.sh"
   },
-  "author": "Xian Malik",
+  "author": "Malik Zubayer Ul Haider",
   "license": "MIT",
   "keywords": [
     "cv",
