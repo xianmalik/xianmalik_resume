@@ -58,8 +58,10 @@
 
 \setmainfont[
   Path = font/,
-  UprightFont = Inter.ttf,
-  RawFeature = {+wght=500}
+  UprightFont = Inter-Variable.ttf,
+  BoldFont = Inter-Variable.ttf,
+  BoldFeatures = {RawFeature = {+wght=700}},
+  RawFeature = {+wght=400}
 ]{Inter}
 
 % Needed for the photo ID
@@ -149,12 +151,12 @@
 %-------------------------------------------------------------------------------
 %                Configuration for fonts
 %-------------------------------------------------------------------------------
-\newcommand*{\headerfont}{\fontspec{Inter}\bfseries}
-\newcommand*{\headerfontlight}{\fontspec{Inter}}
-\newcommand*{\headerfontmedium}{\fontspec{Inter}}
-\newcommand*{\footerfont}{\fontspec{Inter}}
-\newcommand*{\bodyfont}{\fontspec{Inter}}
-\newcommand*{\bodyfontlight}{\fontspec{Inter}}
+\newcommand*{\headerfont}{\fontspec{Inter}[RawFeature = {+wght=700}]}
+\newcommand*{\headerfontlight}{\fontspec{Inter}[RawFeature = {+wght=300}]}
+\newcommand*{\headerfontmedium}{\fontspec{Inter}[RawFeature = {+wght=700}]}
+\newcommand*{\footerfont}{\fontspec{Inter}[RawFeature = {+wght=400}]}
+\newcommand*{\bodyfont}{\fontspec{Inter}[RawFeature = {+wght=400}]}
+\newcommand*{\bodyfontlight}{\fontspec{Inter}[RawFeature = {+wght=300}]}
 
 %-------------------------------------------------------------------------------
 %                Configuration for styles
@@ -168,17 +170,17 @@
 \newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfontlight\color{text} #1}}
 \newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
 \newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
-\newcommand*{\sectionstyle}[1]{{\fontsize{12pt}{1em}\headerfont\color{text} #1}}
+\newcommand*{\sectionstyle}[1]{{\fontsize{12pt}{1em}\bfseries\color{text} #1}}
 \newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
 \newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
 
 % For elements of entry
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{12pt}{1em}\headerfontmedium\color{darktext} #1}}
 \newcommand*{\entrypositionstyle}[1]{{\fontsize{6pt}{1em}\color{graytext} #1}}
-\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\slshape\color{graytext}\fontspec{Inter} #1}}
+\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\slshape\color{graytext}\fontspec{Inter}[RawFeature = {+wght=400}] #1}}
 \newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\slshape\color{graytext} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontspec{Inter}\fontsize{9pt}{1em}\upshape\color{text} #1}}
-\newcommand*{\metastyle}[1]{{\fontspec{Inter}\fontsize{8pt}{1em}\upshape\color{graytext} #1}}
+\newcommand*{\descriptionstyle}[1]{{\fontspec{Inter}[RawFeature = {+wght=400}]\fontsize{9pt}{1em}\upshape\color{text} #1}}
+\newcommand*{\metastyle}[1]{{\fontspec{Inter}[RawFeature = {+wght=400}]\fontsize{8pt}{1em}\upshape\color{graytext} #1}}
 
 % For elements of subentry
 \newcommand*{\subentrytitlestyle}[1]{{\fontsize{7pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
@@ -634,16 +636,13 @@
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{%
-  \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 5cm} R{5cm}}
     \entrytitlestyle{#2} & \entrylocationstyle{#3} \\
     \entrypositionstyle{#1} & \entrydatestyle{#4} \\
-    \vspace{0mm}
-  \end{tabular*}%
     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}\\
-    \vspace{7mm}
+  \end{tabular*}%
 }
 
 \newcommand*{\cvproject}[5]{%
@@ -651,14 +650,11 @@
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 7cm} R{7cm}}
-    \entrytitlestyle{#1} & \entrylocationstyle{#2} \\
-    \vspace{0mm}
-  \end{tabular*}%
+    \entrytitlestyle{#1} & \entrylocationstyle{#2} \\[2mm]
     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#3}}\\
-    \vspace{4mm} \\
-    \multicolumn{1}{L{\textwidth}}{\metastyle{\textbf\textit{Technologies:} {#4}}} \\
-    \vspace{1mm} \\
+    \multicolumn{2}{L{\textwidth}}{\metastyle{\textbf\textit{Technologies:} {#4}}} \\
     \multicolumn{2}{L{\textwidth}}{\metastyle{\textbf\textit{URL:} {#5}}} \\
+  \end{tabular*}%
     \vspace{7mm}
 }
 
