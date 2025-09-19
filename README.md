@@ -7,12 +7,12 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/xianmalik/xianmalik_cv/issues">
-        <img alt="Issues" src="https://img.shields.io/github/issues/xianmalik/xianmalik_cv?style=for-the-badge&logo=bilibili&color=F5E0DC&logoColor=D9E0EE&labelColor=302D41"></a>
-    <a href="https://github.com/xianmalik/xianmalik_cv">
-        <img alt="Repo Size" src="https://img.shields.io/github/repo-size/xianmalik/xianmalik_cv?color=%23DDB6F2&label=SIZE&logo=codesandbox&style=for-the-badge&logoColor=D9E0EE&labelColor=302D41"/></a>
-    <a href="https://github.com/xianmalik/xianmalik_cv/stargazers">
-        <img alt="Stars" src="https://img.shields.io/github/stars/xianmalik/xianmalik_cv?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41"></a>
+    <!-- <a href="https://github.com/xianmalik/xianmalik_resume/issues">
+        <img alt="Issues" src="https://img.shields.io/github/issues/xianmalik/xianmalik_resume?style=for-the-badge&logo=bilibili&color=F5E0DC&logoColor=D9E0EE&labelColor=302D41"></a> -->
+    <a href="https://github.com/xianmalik/xianmalik_resume">
+        <img alt="Repo Size" src="https://img.shields.io/github/repo-size/xianmalik/xianmalik_resume?color=%23DDB6F2&label=SIZE&logo=square&style=for-the-badge&logoColor=D9E0EE&labelColor=302D41"/></a>
+    <a href="https://github.com/xianmalik/xianmalik_resume/stargazers">
+        <img alt="Stars" src="https://img.shields.io/github/stars/xianmalik/xianmalik_resume?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41"></a>
 </p>
 
 <hr />
