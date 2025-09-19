@@ -1,0 +1,21 @@
+{
+  "name": "xianmalik-cv",
+  "version": "1.0.0",
+  "description": "XeLaTeX CV/Resume with automated build scripts",
+  "scripts": {
+    "build": "./build.sh",
+    "watch": "./watch.sh",
+    "clean": "./clean.sh",
+    "dev": "./watch.sh",
+    "rebuild": "npm run clean && npm run build"
+  },
+  "author": "Xian Malik",
+  "license": "MIT",
+  "keywords": [
+    "cv",
+    "resume",
+    "latex",
+    "xelatex",
+    "pdf"
+  ]
+}
