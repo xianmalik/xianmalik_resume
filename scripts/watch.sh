@@ -19,13 +19,13 @@ fi
 build_cv() {
     echo ""
     echo "🔄 [$(date '+%H:%M:%S')] File changed, rebuilding..."
-    ./build.sh
+    scripts/build.sh
     echo ""
 }
 
 # Initial build
 echo "🚀 Running initial build..."
-./build.sh
+scripts/build.sh
 echo ""
 
 # Watch for changes in .tex and .cls files
