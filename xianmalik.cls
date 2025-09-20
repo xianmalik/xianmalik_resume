@@ -1,7 +1,7 @@
 %-------------------------------------------------------------------------------
 %                Identification
 %-------------------------------------------------------------------------------
-\ProvidesClass{xianmalik}[2017/02/05 v1.6.1 xianmalik Curriculum Vitae Class]
+\ProvidesClass{xianmalik}[2025/09/20 v1.6.1 xianmalik Curriculum Vitae Class]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -123,26 +123,16 @@
 \colorlet{graytext}{gray}
 \colorlet{lighttext}{lightgray}
 \colorlet{sectiondivider}{gray}
-% russell colors
-\definecolor{russell-emerald}{HTML}{00A388}
-\definecolor{russell-skyblue}{HTML}{0395DE}
-\definecolor{russell-red}{HTML}{DC3522}
-\definecolor{russell-purple}{HTML}{A32CC4}
-\definecolor{russell-pink}{HTML}{EF4089}
-\definecolor{russell-orange}{HTML}{FF6138}
-\definecolor{russell-nephritis}{HTML}{27AE60}
-\definecolor{russell-concrete}{HTML}{95A5A6}
-\definecolor{russell-darknight}{HTML}{131A28}
-\definecolor{russell-black}{HTML}{000000}
-\colorlet{russell}{russell-red}
+% Accent color
+\definecolor{accentcolor}{HTML}{DC3522}
 
 % Boolean value to switch section color highlighting
 \newbool{acvSectionColorHighlight}
 \setbool{acvSectionColorHighlight}{true}
 
-% russell section color
+% Accent section color
 \def\@sectioncolor#1#2#3{%
-  \ifbool{acvSectionColorHighlight}{{\color{russell}#1#2#3}}{#1#2#3}%
+  \ifbool{acvSectionColorHighlight}{{\color{accentcolor}#1#2#3}}{#1#2#3}%
 }
 
 
@@ -163,7 +153,7 @@
 % For fundamental structures
 \newcommand*{\headerfirstnamestyle}[1]{{\fontsize{20pt}{1em}\headerfont\color{text} #1}}
 \newcommand*{\headerlastnamestyle}[1]{{\fontsize{20pt}{1em}\headerfont\color{text} #1}}
-\newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{russell} #1}}
+\newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{graytext} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{7pt}{1em}\headerfontlight\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfontlight\color{text} #1}}
 \newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}

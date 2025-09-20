@@ -109,7 +109,7 @@
     <h2 align="center">Customization</h2>
 </p>
 
-- **Colors**: Modify russell color palette in `xianmalik.cls`
+- **Colors**: Modify accent color in `xianmalik.cls`
 - **Fonts**: Update font specifications in the class file
 - **Layout**: Adjust spacing and margins in the configuration section
 - **Content**: Edit individual section files in the `/cv` directory
