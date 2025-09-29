@@ -1,5 +1,5 @@
 <p align="center">
-  <h2 align="center">XianMalik CV</h2>
+  <img src="./logo.png" />
 </p>
 
 <p align="center">
