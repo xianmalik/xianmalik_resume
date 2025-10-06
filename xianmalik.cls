@@ -103,7 +103,6 @@
 % Fonts
 \newcommand*{\headerfont}{\fontspec{Inter}[RawFeature = {+wght=700}]}
 \newcommand*{\headerfontlight}{\fontspec{Inter}[RawFeature = {+wght=300}]}
-\newcommand*{\headerfontmedium}{\fontspec{Inter}[RawFeature = {+wght=700}]}
 \newcommand*{\footerfont}{\fontspec{Inter}[RawFeature = {+wght=400}]}
 \newcommand*{\bodyfont}{\fontspec{Inter}[RawFeature = {+wght=400}]}
 \newcommand*{\bodyfontlight}{\fontspec{Inter}[RawFeature = {+wght=300}]}
@@ -114,19 +113,17 @@
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{graytext} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{7pt}{1em}\headerfontlight\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfontlight\color{text} #1}}
-% quote style unused — removed
 \newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
 \newcommand*{\sectionstyle}[1]{{\fontsize{12pt}{1em}\bfseries\color{text} #1}}
-\newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
 \newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
 
 % Entry styles
-\newcommand*{\entrytitlestyle}[1]{{\fontsize{12pt}{1em}\headerfontmedium\color{darktext} #1}}
+\newcommand*{\entrytitlestyle}[1]{{\fontsize{12pt}{1em}\headerfont\color{darktext} #1}}
 \newcommand*{\entrypositionstyle}[1]{{\fontsize{6pt}{1em}\color{graytext} #1}}
-\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\slshape\color{graytext}\fontspec{Inter}[RawFeature = {+wght=400}] #1}}
-\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\slshape\color{graytext} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontspec{Inter}[RawFeature = {+wght=400}]\fontsize{9pt}{1em}\upshape\color{text} #1}}
-\newcommand*{\metastyle}[1]{{\fontspec{Inter}[RawFeature = {+wght=400}]\fontsize{8pt}{1em}\upshape\color{graytext} #1}}
+\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\slshape\color{graytext} #1}}
+\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{graytext} #1}}
+\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\upshape\color{text} #1}}
+\newcommand*{\metastyle}[1]{{\fontsize{8pt}{1em}\bodyfont\upshape\color{graytext} #1}}
 
 
 
