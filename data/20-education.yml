@@ -1,0 +1,9 @@
+schools:
+  - degree: BSc in Computer Science
+    institution: Daffodil International University
+    location: Dhaka, Bangladesh
+    dates: 2015 - 2019
+    items:
+      - Worked as TA and Prefect
+      - Completed Thesis and internship on a virtual currency wallet mobile application
+      - "\\textbf{Courses:} Data Science, Programming for Data Science, Knowledge Representation and Reasoning, Statistical Theory and Methods, Learning Skills through Case Studies, Artificial Intelligence, Machine Learning, Statistical Learning"

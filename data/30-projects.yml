@@ -1,0 +1,43 @@
+projects:
+  - name: Skipper Hospitality Platform
+    subtitle: Hospitality CMS & Booking Engine
+    items:
+      - Developed Skipper CMS using ReactJS, enabling users to efficiently update their websites, significantly enhancing content management workflows.
+      - Engineered a seamless data integration system by fetching content from a Django backend via RESTful API, improving data management and reliability for web administrators.
+      - Implemented support for custom-made Svelte templates, allowing for dynamic and versatile website rendering, catering to diverse business requirements.
+    tech:
+      - ReactJS
+      - GraphQL
+      - TailwindCSS
+      - HeadlessUI
+      - JSON Schema Form Builder
+      - oAUTH
+      - Django
+    url: https://platform.skipperhospitality.com/
+    urlLabel: platform.skipperhospitality.com
+
+  - name: Plume
+    subtitle: NetlifyCMS, NextJS Website
+    items:
+      - Designed and implemented custom templates and reusable view blocks using Next.js and NetlifyCMS, significantly enhancing site usability and performance.
+      - Conducted comprehensive visual tests with Storybook.js, ensuring fluid and responsive layouts across all devices and improving user experience.
+    tech:
+      - NextJS
+      - NetlifyCMS
+      - Styled-Components
+    url: https://www.plume.com
+    urlLabel: www.plume.com
+
+  - name: SHOPENGINE
+    subtitle: Woocommerce Template Builder
+    items:
+      - Developed a front-end shopping widget builder using PHP within the Elementor framework, improving user experience for over 40,000 active users.
+      - Enhanced customization options, leading to a significant increase in user engagement and satisfaction.
+    tech:
+      - PHP
+      - ReactJS
+      - Ant Design
+      - Redux
+      - REST APIs
+    url: https://wordpress.org/plugins/shopengine/
+    urlLabel: https://wordpress.org/plugins/shopengine/

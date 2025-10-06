@@ -1,0 +1,56 @@
+positions:
+  - title: Software Engineer
+    company: Cloudly Infotech Ltd.
+    location: Hybrid - Dhaka, Bangladesh
+    dates: January 2025 - Present
+    items:
+      - Developed industry-grade machine controller software using Next.js, delivering real-time and historical data visualization for manufacturing operations.
+      - Integrated WebSocket and REST API endpoints to process and display both live and stored machine data.
+      - Implemented a Material Design system with Tailwind CSS to ensure a consistent, responsive, and user-friendly interface.
+  - title: Contractual & Part time
+    company: Freelance Web Engineer
+    location: Remote - Dhaka, Bangladesh
+    dates: January 2015 - Present
+    items:
+      - Provided front-end website development using WordPress, ReactJS, and other modern web application technologies.
+      - Coded websites and web applications using HTML, CSS, JavaScript, JS Frameworks etc.
+      - Utilized modern web technologies to develop custom solutions for diverse industries.
+      - Planned and engineered RESTful web services to manipulate dynamic datasets.
+  - title: Senior Front-End Engineer
+    company: Curotec
+    location: Remote - Pennsylvania, USA
+    dates: June 2022 - May 2023
+    items:
+      - Developed and delivered 5+ industry-standard web applications using ReactJS, NextJS, Bootstrap, and Laravel, enhancing client satisfaction and achieving a 25% increase in user engagement.
+      - Ensured seamless user experiences with 100% cross-browser compatibility and implementing performance optimizations, resulting in a 20% increase in performance scores.
+      - Strengthened communication skills through regular interactions with others.
+      - Resolved complex issues, enhanced operational efficiency by 30%, and consistently delivered exceptional service, contributing to a 25% increase in customer satisfaction.
+  - title: Front-End Engineer
+    company: Reformed Tech
+    location: Dhaka, Bangladesh
+    dates: June 2021 - July 2022
+    items:
+      - Designed and implemented robust Content Management Systems, enhancing client interface efficiency by 40% and reducing content update times by 30%.
+      - Took concepts and produced design mock-ups and prototypes to strengthen designs, enhance user experiences, and improve site interactions.
+      - Worked closely with UX / UI designers to implement visually appealing interfaces that met client requirements.
+      - Performed security maintenance and patching on the website interface, ensuring 99.9% uptime and safeguarding post-launch viability.
+      - Conducted unit testing and resolved issues in web applications, achieving a 95% bug resolution rate and enhancing overall application stability.
+  - title: Front-End Engineer
+    company: XpeedStudio
+    location: Dhaka, Bangladesh
+    dates: May 2020 - May 2021
+    items:
+      - Contributed to creating powerful WordPress plugins to aid users build websites using Elementor.
+      - Created web-based admin dashboards to manage plugin administrative tasks.
+      - Created several WordPress themes published on community markets.
+
+internships:
+  - title: Intern Software Engineer
+    company: Bangladesh Venture Capital Ltd.
+    location: Dhaka, Bangladesh
+    dates: January 2018 - March 2019
+    items:
+      - Developed a virtual currency wallet application for in-campus facility transactions within my university.
+      - Gained hands-on experience while collaborating with a team to deliver a secure and user-friendly application.
+      - Prepared project presentations and reports to assist senior staff.
+      - Participated in workshops and presentations related to projects to gain knowledge.

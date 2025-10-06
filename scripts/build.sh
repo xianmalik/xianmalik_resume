@@ -44,6 +44,27 @@ show_spinner() {
     printf "\b${GREEN}Done!${NC}\n"
 }
 
+# Optional: generate TeX from YAML (no-op if Python or data missing)
+if command -v python3 >/dev/null 2>&1; then
+  if [ -f "scripts/generate.py" ]; then
+    # Verify PyYAML
+    if ! python3 -c "import yaml" >/dev/null 2>&1; then
+      echo -e "${RED}PyYAML not installed.${NC} Install with: ${YELLOW}python3 -m pip install -r requirements.txt${NC}"
+      exit 1
+    fi
+    # Verify data directory exists with at least one yml
+    if [ ! -d "data" ] || ! ls data/*.yml >/dev/null 2>&1; then
+      echo -e "${RED}No YAML data found in ${WHITE}data/${NC}. Add files like ${WHITE}data/summary.yml${NC}."
+      exit 1
+    fi
+    echo -e "${YELLOW}Generating TeX from YAML...${NC}"
+    if ! python3 scripts/generate.py; then
+      echo -e "${RED}Data generation failed.${NC}"
+      exit 1
+    fi
+  fi
+fi
+
 # Start compilation in background and show spinner
 echo -e "${YELLOW}Starting XeLaTeX compilation...${NC}"
 xelatex -interaction=nonstopmode -output-directory=output resume.tex > /dev/null 2>&1 &

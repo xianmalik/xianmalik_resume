@@ -1,0 +1,25 @@
+skills:
+  - category: Wordpress
+    items: [Themes and Plugins Development]
+  - category: Web
+    items: [HTML5, CSS, "JavaScript (vanilla, ES6)", Typescript, jQuery]
+  - category: NodeJS
+    items: [ReactJS, NextJS, VueJS, ExpressJS]
+  - category: Frameworks
+    items: [Bootstrap, TailwindCSS, "Ant Design", MaterialUI]
+  - category: CSS
+    items: [Stencil, Less, Scss]
+  - category: Packaging
+    items: [Webpack, Babel, Rollup, Vite]
+  - category: Others
+    items: [JWT, 0Auth, "RESTful API"]
+  - category: Database
+    items: [MySQL, MongoDB, Firebase, PostgreSQL]
+  - category: Version Management
+    items: [Git, Github]
+  - category: Technical Proficiency
+    items: [Troubleshooting, Debugging, "Unit testing", Documentation]
+  - category: Systems
+    items: [MacOS, Linux, Windows]
+  - category: Soft Skills
+    items: ["Strategic Thinking", Management, Problem-solving, Teamwork]
