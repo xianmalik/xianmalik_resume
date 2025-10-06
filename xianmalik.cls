@@ -293,8 +293,8 @@
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 7cm} R{7cm}}
     \entrytitlestyle{#1} & \entrylocationstyle{#2} \\[2mm]
     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#3}}\\
-    \multicolumn{2}{L{\textwidth}}{\metastyle{\textbf\textit{Technologies:} {#4}}} \\
-    \multicolumn{2}{L{\textwidth}}{\metastyle{\textbf\textit{URL:} {#5}}} \\
+    \multicolumn{2}{L{\textwidth}}{\metastyle{\textbf{\textit{Technologies:} #4}}} \\
+    \multicolumn{2}{L{\textwidth}}{\metastyle{\textbf{\textit{URL:} #5}}} \\
   \end{tabular*}%
   \vspace{1mm}
 }
@@ -326,7 +326,7 @@
   \begin{justify}
   \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
     \setlength{\parskip}{0pt}
-    \renewcommand{\labelitemi}{\bullet}
+    \renewcommand{\labelitemi}{\textbullet}
 }{%
   \end{itemize}
   \end{justify}
