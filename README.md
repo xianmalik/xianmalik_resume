@@ -3,6 +3,9 @@
 </p>
 
 <p align="center">
+    <img alt="Version" src="https://img.shields.io/badge/Version-2.0.0-pink?style=for-the-badge&labelColor=302D41&logo=git&logoColor=D9E0EE">
+</p>
+<p align="center">
     Professional LaTeX CV Template powered by XeLaTeX & Inter Font Family
 </p>
 
@@ -32,17 +35,26 @@
 
 <p align="center">
     <h2 align="center">Quick Start</h2>
+    <small>Data-driven CV: edit YAML in <code>data/</code>, then build.</small>
 </p>
 
 ```bash
-# Build the CV
+# 1) Create a Python virtual environment (recommended)
+python3 -m venv .venv
+source .venv/bin/activate
+
+# 2) Install generator dependencies
+python3 -m pip install -r requirements.txt
+
+# 3) Ensure XeLaTeX is available
+#   macOS (MacTeX):   brew install --cask mactex # or install from tug.org
+#   Linux (TeX Live): sudo apt-get install texlive-xetex texlive-fonts-recommended
+
+# 4) Build the PDF (generates cv/*.tex from data/*.yml, then compiles)
 ./scripts/build.sh
 
-# Watch for changes (if available)
-./scripts/watch.sh
-
-# Clean output files
-./scripts/clean.sh
+# Optional
+./scripts/clean.sh     # remove auxiliary files
 ```
 
 <p align="center">
@@ -50,69 +62,74 @@
 </p>
 
 ```
-├── cv/                     # CV content sections
-│   ├── 00-summary.tex
-│   ├── 01-experience.tex
-│   ├── 02-education.tex
-│   ├── 03-projects.tex
-│   ├── 04-skills.tex
-│   └── 05-languages.tex
-├── font/                   # Inter font family
-├── output/                 # Generated PDF output
-├── scripts/                # Build automation scripts
-├── resume.tex             # Main LaTeX file
-└── xianmalik.cls          # Custom CV class
+├── cv/                      # GENERATED TeX sections (do not edit)
+│   ├── summary.tex
+│   ├── experience.tex
+│   ├── education.tex
+│   ├── projects.tex
+│   ├── skills.tex
+│   └── languages.tex
+├── data/                    # Source data (edit these)
+│   ├── 00-summary.yml
+│   ├── 10-experience.yml
+│   ├── 20-education.yml
+│   ├── 30-projects.yml
+│   ├── 40-skills.yml
+│   └── 50-languages.yml
+├── font/                    # Inter fonts
+├── output/                  # Built PDF output
+├── scripts/                 # Build & generator scripts
+├── requirements.txt         # Python deps (PyYAML)
+├── resume.tex               # Main LaTeX file
+└── xianmalik.cls            # Custom CV class
 ```
 
 <p align="center">
     <h2 align="center">Features</h2>
 </p>
 
-- **Modern Design** - Clean and professional layout
-- **Customizable** - Easy to modify colors, fonts, and structure
-- **Responsive** - Optimized for both screen and print
-- **Fast Build** - Efficient compilation with colorized output
-- **Auto Cleanup** - Automatic removal of auxiliary files
-- **Minimalist** - Only essential code, no bloat
+- **Data-driven**: Update YAML in `data/`, not TeX
+- **Clean design**: Minimal, readable Inter font setup
+- **One-command build**: `./scripts/build.sh`
+- **Safe generation**: Fails fast if data or PyYAML/XeLaTeX are missing
 
 <p align="center">
     <h2 align="center">Requirements</h2>
 </p>
 
-- XeLaTeX (TeX Live or MiKTeX)
-- Inter font family (included in `/font` directory)
-- Font Awesome 5 package
+- Python 3.9+ (for the YAML → TeX generator)
+- PyYAML (`python3 -m pip install -r requirements.txt`)
+- XeLaTeX (TeX Live or MacTeX)
+- Fonts: Inter (bundled) and Font Awesome 5 (LaTeX package)
 
 <p align="center">
     <h2 align="center">Usage</h2>
 </p>
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/xianmalik/xianmalik_cv.git
-   cd xianmalik_cv
-   ```
+1) Edit your data only (do not edit `cv/*.tex`)
+   - `data/00-summary.yml`
+   - `data/10-experience.yml`
+   - `data/20-education.yml`
+   - `data/30-projects.yml`
+   - `data/40-skills.yml`
+   - `data/50-languages.yml`
 
-2. **Customize your information**
-   - Edit `resume.tex` for personal details
-   - Modify files in `/cv` directory for content
+2) Build
+```bash
+./scripts/build.sh
+```
 
-3. **Build your CV**
-   ```bash
-   ./scripts/build.sh
-   ```
-
-4. **Find your PDF**
-   - Generated CV will be in `/output/resume.pdf`
+3) Output
+- PDF: `output/resume.pdf`
 
 <p align="center">
     <h2 align="center">Customization</h2>
 </p>
 
-- **Colors**: Modify accent color in `xianmalik.cls`
-- **Fonts**: Update font specifications in the class file
-- **Layout**: Adjust spacing and margins in the configuration section
-- **Content**: Edit individual section files in the `/cv` directory
+- **Colors**: Edit accent/text colors in `xianmalik.cls`
+- **Fonts**: Adjust Inter weights in `xianmalik.cls`
+- **Layout**: Tune geometry and spacing in `resume.tex` / class
+- **Content**: Edit YAML in `data/` (generator writes `cv/*.tex`)
 
 <p align="center">
     <h2 align="center">License</h2>
