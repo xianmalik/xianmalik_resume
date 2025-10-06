@@ -1,17 +1,9 @@
-%-------------------------------------------------------------------------------
-%                Identification
-%-------------------------------------------------------------------------------
+% Identification
 \ProvidesClass{xianmalik}[2025/09/20 v1.6.1 xianmalik Curriculum Vitae Class]
 \NeedsTeXFormat{LaTeX2e}
 
 
-%-------------------------------------------------------------------------------
-%                Class options
-%
-% (need to be done before the external package loading, for example because
-% we need \paperwidth, \paperheight and \@ptsize to be defined before loading
-% geometry and fancyhdr)
-%-------------------------------------------------------------------------------
+% Class options
 % Options for draft or final
 \DeclareOption{draft}{\setlength\overfullrule{5pt}}
 \DeclareOption{final}{\setlength\overfullrule{0pt}}
@@ -23,10 +15,8 @@
 \LoadClass{article}
 
 
-%-------------------------------------------------------------------------------
-%                3rd party packages
-%-------------------------------------------------------------------------------
-% make fixed length table
+% Packages
+% tables, lists, alignment, layout, header/footer, colors, conditionals, icons, fonts
 \RequirePackage{array}
 % handle list environment
 \RequirePackage{enumitem}
@@ -38,21 +28,13 @@
 \RequirePackage{fancyhdr}
 % manage colors
 \RequirePackage{xcolor}
-% use \ifxetex-\else-\fi statement
-\RequirePackage{ifxetex}
-% use \if-\then-\else statement
+% conditional helpers
 \RequirePackage{xifthen}
-% use a toolbox of programming tools
 \RequirePackage{etoolbox}
-% change line spacing in specific environment
-\RequirePackage{setspace}
-% To support LaTeX quoting style
-% manage math fonts
-\RequirePackage{unicode-math}
-% use icons from font-awesome
+% icons
 \RequirePackage{fontawesome5}
 
-% manage fonts
+% fonts
 \RequirePackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
 
@@ -64,7 +46,7 @@
   RawFeature = {+wght=400}
 ]{Inter}
 
-% deal a paragraphs
+% paragraph spacing and hyperlinks
 \RequirePackage{parskip}
 % deal hyperlink
 \RequirePackage[hidelinks,unicode,pdfpagelabels=false]{hyperref}
@@ -74,49 +56,31 @@
   pdfsubject={Resume},
   pdfkeywords={Resume, CV, Software, Engineer}
 }
-% Solves issues Warning: File `cv.out' has changed
+% bookmarking
 \RequirePackage{bookmark}
 
-%-------------------------------------------------------------------------------
-%                Configuration for directory locations
-%-------------------------------------------------------------------------------
-% Configure an optional directory location for fonts(default: 'fonts/')
-% Not required anymore but left in place for backward compatability.
+% Directory configuration (backwards compatibility)
 \newcommand*{\fontdir}[1][fonts/]{\def\@fontdir{#1}}
 
-%-------------------------------------------------------------------------------
-%                Configuration for layout
-%-------------------------------------------------------------------------------
-%% Page Layout
-% Configure page margins with geometry
+% Layout
 \geometry{left=2.0cm, top=1.5cm, right=2.0cm, bottom=2.0cm, footskip=.5cm}
 
-%% Header & Footer
-% Set offset to each header and footer
+% Header & Footer
 \fancyhfoffset{0em}
 % Remove head rule
 \renewcommand{\headrulewidth}{0pt}
 % Clear all header & footer fields
 \fancyhf{}
-% Enable if you want to make header or footer using fancyhdr
+% use fancyhdr
 \pagestyle{fancy}
 
 
-%-------------------------------------------------------------------------------
-%                Configuration for colors
-%-------------------------------------------------------------------------------
-% Gray-scale colors
+% Colors
 \definecolor{white}{HTML}{FFFFFF}
 \definecolor{black}{HTML}{000000}
 \definecolor{darkgray}{HTML}{333333}
 \definecolor{gray}{HTML}{5D5D5D}
 \definecolor{lightgray}{HTML}{999999}
-% Basic colors
-\definecolor{green}{HTML}{C2E15F}
-\definecolor{orange}{HTML}{FDA333}
-\definecolor{purple}{HTML}{D3A4F9}
-\definecolor{red}{HTML}{FB4485}
-\definecolor{blue}{HTML}{6CE0F1}
 % Text colors
 \definecolor{darktext}{HTML}{414141}
 \colorlet{text}{darkgray}
@@ -126,7 +90,7 @@
 % Accent color
 \definecolor{accentcolor}{HTML}{DC3522}
 
-% Boolean value to switch section color highlighting
+% Section color highlight toggle
 \newbool{acvSectionColorHighlight}
 \setbool{acvSectionColorHighlight}{true}
 
@@ -136,9 +100,7 @@
 }
 
 
-%-------------------------------------------------------------------------------
-%                Configuration for fonts
-%-------------------------------------------------------------------------------
+% Fonts
 \newcommand*{\headerfont}{\fontspec{Inter}[RawFeature = {+wght=700}]}
 \newcommand*{\headerfontlight}{\fontspec{Inter}[RawFeature = {+wght=300}]}
 \newcommand*{\headerfontmedium}{\fontspec{Inter}[RawFeature = {+wght=700}]}
@@ -146,23 +108,19 @@
 \newcommand*{\bodyfont}{\fontspec{Inter}[RawFeature = {+wght=400}]}
 \newcommand*{\bodyfontlight}{\fontspec{Inter}[RawFeature = {+wght=300}]}
 
-%-------------------------------------------------------------------------------
-%                Configuration for styles
-%-------------------------------------------------------------------------------
-% Configure styles for each CV elements
-% For fundamental structures
+% Styles
 \newcommand*{\headerfirstnamestyle}[1]{{\fontsize{20pt}{1em}\headerfont\color{text} #1}}
 \newcommand*{\headerlastnamestyle}[1]{{\fontsize{20pt}{1em}\headerfont\color{text} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{graytext} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{7pt}{1em}\headerfontlight\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfontlight\color{text} #1}}
-\newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
+% quote style unused — removed
 \newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
 \newcommand*{\sectionstyle}[1]{{\fontsize{12pt}{1em}\bfseries\color{text} #1}}
 \newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
 \newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
 
-% For elements of entry
+% Entry styles
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{12pt}{1em}\headerfontmedium\color{darktext} #1}}
 \newcommand*{\entrypositionstyle}[1]{{\fontsize{6pt}{1em}\color{graytext} #1}}
 \newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\slshape\color{graytext}\fontspec{Inter}[RawFeature = {+wght=400}] #1}}
@@ -172,120 +130,67 @@
 
 
 
-% For elements of skill
+% Skill styles
 \newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\color{darktext} #1}}
 \newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{graytext} #1}}
 
 
 
-%-------------------------------------------------------------------------------
-%                Commands for personal information
-%-------------------------------------------------------------------------------
-
-% Define writer's name
-% Usage: \name{<firstname>}{<lastname>}
-% Usage: \firstname{<firstname>}
-% Usage: \lastname{<lastname>}
-% Usage: \familyname{<familyname>}
+% Personal info commands
 \newcommand*{\name}[2]{
     \def\@firstname{\headerfont #1}%
     \def\@lastname{\headerfont #2}
 }
-\newcommand*{\firstname}[1]{\def\@firstname{#1}}
-\newcommand*{\lastname}[1]{\def\@lastname{#1}}
-\newcommand*{\familyname}[1]{\def\@lastname{#1}}
-\def\@familyname{\@lastname}
+% legacy name helpers unused — removed
 
-% Define writer's address
-% Usage: \address{<address>}
+% Address
 \newcommand*{\address}[1]{\def\@address{#1}}
 
-% Define writer's position
-% Usage: \position{<position>}
+% Position
 \newcommand*{\position}[1]{\def\@position{#1}}
 
-% Defines writer's mobile (optional)
-% Usage: \mobile{<mobile number>}
+% Mobile
 \newcommand*{\mobile}[1]{\def\@mobile{#1}}
 
-% Defines writer's email (optional)
-% Usage: \email{<email address>}
+% Email
 \newcommand*{\email}[1]{\def\@email{#1}}
 
-
-% Defines writer's homepage (optional)
-% Usage: \homepage{<url>}
+% Homepage
 \newcommand*{\homepage}[1]{\def\@homepage{#1}}
 
-% Defines writer's github (optional)
-% Usage: \github{<github-nick>}
+% Github
 \newcommand*{\github}[1]{\def\@github{#1}}
-
-
-
-
-% Defines writer's linked-in (optional)
-% Usage: \linkedin{<linked-in-nick>}
+% LinkedIn
 \newcommand*{\linkedin}[1]{\def\@linkedin{#1}}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%-------------------------------------------------------------------------------
-%                Commands for extra
-%-------------------------------------------------------------------------------
-%% Define helper macros a user can change easily
-% Header
+% Helper macros
 \newcommand{\acvHeaderNameDelim}{\space}
 \newcommand{\acvHeaderAfterNameSkip}{.4mm}
-\newcommand{\acvHeaderAfterPositionSkip}{.4mm}
+% unused skip removed
 \newcommand{\acvHeaderAfterAddressSkip}{-.5mm}
 \newcommand{\acvHeaderIconSep}{\space}
 \newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 \newcommand{\acvHeaderAfterSocialSkip}{6mm}
-\newcommand{\acvHeaderAfterQuoteSkip}{5mm}
+% unused skip removed
 
-% Others
+% Spacing
 \newcommand{\acvSectionTopSkip}{3mm}
 \newcommand{\acvSectionContentTopSkip}{2.5mm}
 
 
-%-------------------------------------------------------------------------------
-%                Commands for utilities
-%-------------------------------------------------------------------------------
-% Use to align an element of tabular table
+% Utilities
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
-% Use to draw horizontal line with specific thickness
+% Horizontal rule fill
 \def\vhrulefill#1{\leavevmode\leaders\hrule\@height#1\hfill \kern\z@}
 
-% Use to execute conditional statements by checking empty string
-\newcommand*{\ifempty}[3]{\ifthenelse{\isempty{#1}}{#2}{#3}}
+% conditional helper unused — removed
 
 
-%-------------------------------------------------------------------------------
-%                Commands for elements of CV structure
-%-------------------------------------------------------------------------------
-% Define a header for CV
-% Usage: \makecvheader
+% CV structure — header
 \newcommand*{\makecvheader}[1][C]{%
   \newlength{\headertextwidth}
   \setlength{\headertextwidth}{\textwidth}
@@ -310,13 +215,6 @@
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
           \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}%
         }%
-      \ifthenelse{\isundefined{\@dateofbirth}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          % \mbox prevents wrapping of elements%
-          \mbox{\faBirthdayCake\acvHeaderIconSep\@dateofbirth}%
-        }%
       \ifthenelse{\isundefined{\@homepage}}%
         {}%
         {%
@@ -329,35 +227,11 @@
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
           \href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}%
         }%
-      \ifthenelse{\isundefined{\@gitlab}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://gitlab.com/\@gitlab}{\faGitlab\acvHeaderIconSep\@gitlab}%
-        }%
-      \ifthenelse{\isundefined{\@bitbucket}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://bitbucket.com/\@bitbucket}{\faBitbucket\acvHeaderIconSep\@bitbucket}%
-        }%
-      \ifthenelse{\isundefined{\@stackoverflowid}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}%
-        }%
       \ifthenelse{\isundefined{\@linkedin}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
           \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedin\acvHeaderIconSep\@linkedin}%
-        }%
-      \ifthenelse{\isundefined{\@orcid}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://orcid.org/\@orcid}{\faOrcid\acvHeaderIconSep\@orcid}%
         }%
     } \\[\acvHeaderAfterSocialSkip]%
   \end{minipage}
