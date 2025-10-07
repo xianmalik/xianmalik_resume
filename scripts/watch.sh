@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # File watcher script for automatic CV builds
-# Watches for changes in .tex and .cls files and triggers build
+# Watches for changes in .tex/.cls, YAML data files, and generator script
 
-echo "🔍 Watching for changes in .tex and .cls files..."
+echo "🔍 Watching for changes in .tex/.cls, data/*.yml, and scripts/generate.py..."
 echo "📝 Will automatically rebuild when files are saved"
 echo "⏹️  Press Ctrl+C to stop watching"
 echo ""
@@ -28,7 +28,13 @@ echo "🚀 Running initial build..."
 scripts/build.sh
 echo ""
 
-# Watch for changes in .tex and .cls files
-fswatch -o -e ".*" -i "\\.tex$" -i "\\.cls$" . | while read f; do
+# Watch for changes
+fswatch -o \
+    -e ".*" \
+    -i ".*\\.tex$" \
+    -i ".*\\.cls$" \
+    -i ".*/data/.*\\.yml$" \
+    -i ".*/scripts/generate\\.py$" \
+    . data scripts/generate.py | while read f; do
     build_cv
 done
