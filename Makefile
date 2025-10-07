@@ -27,5 +27,5 @@ open: build
 	@([ -f $(PDF) ] && open $(PDF)) || { echo "$(PDF) not found"; exit 1; }
 
 clean:
-	@./scripts/clean.sh
+	@PATH="$(VENV_DIR)/bin:$$PATH" $(PY) ./scripts/clean.py
 

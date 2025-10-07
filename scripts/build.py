@@ -19,6 +19,9 @@ RED = "\033[0;31m"
 WHITE = "\033[1;37m"
 GRAY = "\033[0;37m"
 NC = "\033[0m"  # No Color
+BOLD = "\033[1m"
+# 256-color orange (falls back gracefully if unsupported)
+ORANGE = "\033[38;5;208m"
 
 
 def print_banner() -> None:
@@ -65,7 +68,6 @@ def generate_from_yaml_if_possible() -> None:
         print(f"{RED}No YAML data found in {WHITE}data/{NC}. Add files like {WHITE}data/summary.yml{NC}.")
         sys.exit(1)
 
-    print(f"{YELLOW}Generating TeX from YAML...{NC}")
     try:
         subprocess.run(["python3", generate_script], check=True)
     except subprocess.CalledProcessError:
@@ -73,22 +75,49 @@ def generate_from_yaml_if_possible() -> None:
         sys.exit(1)
 
 
-def show_spinner(process: subprocess.Popen) -> None:
+def run_step_with_spinner(title: str, work_fn, color: str = GREEN) -> any:
+    """Run a step showing a spinner (yellow) and finalize with a green checkmark.
+
+    The provided work_fn is executed in a background thread; its return value
+    is returned to the caller after completion.
+    """
     spinner_chars = "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"
+    result_container = {"value": None, "error": None}
+
+    def _runner():
+        try:
+            result_container["value"] = work_fn()
+        except BaseException as exc:  # propagate later
+            result_container["error"] = exc
+
+    thread = threading.Thread(target=_runner, daemon=True)
+    thread.start()
+
     i = 0
-    sys.stdout.write(f"{YELLOW}Compiling:  {NC}")
+    # initial line
+    sys.stdout.write(f"{color}{spinner_chars[i]} {title}{NC}")
     sys.stdout.flush()
-    while process.poll() is None:
-        sys.stdout.write(f"\b{GREEN}{spinner_chars[i]}{NC}")
+    i = (i + 1) % len(spinner_chars)
+    while thread.is_alive():
+        time.sleep(0.1)
+        sys.stdout.write(f"\r{color}{spinner_chars[i]} {title}{NC}")
         sys.stdout.flush()
         i = (i + 1) % len(spinner_chars)
-        time.sleep(0.1)
-    sys.stdout.write(f"\b{GREEN}Done!{NC}\n")
+    thread.join()
+
+    if result_container["error"] is not None:
+        # keep the line, but move to new line with error
+        sys.stdout.write("\r")
+        sys.stdout.flush()
+        raise result_container["error"]
+
+    # Replace spinner with a green checkmark on the same line
+    sys.stdout.write(f"\r{color}✓ {title}{NC} {BOLD}{WHITE}DONE!{NC}\n")
     sys.stdout.flush()
+    return result_container["value"]
 
 
 def compile_xelatex() -> int:
-    print(f"{YELLOW}Starting XeLaTeX compilation...{NC}")
     # Run xelatex in output directory, capture output to resume.log
     log_path = os.path.join("output", "resume.log")
     with open(log_path, "w") as log_file:
@@ -103,15 +132,12 @@ def compile_xelatex() -> int:
             stderr=subprocess.STDOUT,
         )
 
-        spinner_thread = threading.Thread(target=show_spinner, args=(process,), daemon=True)
-        spinner_thread.start()
+        # Wait for completion
         process.wait()
-        spinner_thread.join()
         return process.returncode or 0
 
 
 def cleanup_aux_files() -> None:
-    print(f"{YELLOW}Cleaning up auxiliary files...{NC}")
     patterns = [
         os.path.join("output", "*.aux"),
         os.path.join("output", "*.log"),
@@ -125,20 +151,56 @@ def cleanup_aux_files() -> None:
                 os.remove(path)
             except OSError:
                 pass
-    print(f"{GREEN}✓ Cleanup completed{NC}")
 
 
 def main() -> int:
     print_banner()
     ensure_output_dir()
-    generate_from_yaml_if_possible()
+    # Step 1: Generate TeX from YAML (if possible)
+    def _maybe_generate():
+        generate_from_yaml_if_possible()
+    run_step_with_spinner("Generating TeX from YAML...", _maybe_generate, color=GREEN)
 
-    exit_code = compile_xelatex()
+    # Step 2: Starting XeLaTeX
+    def _start_xelatex() -> subprocess.Popen:
+        # Start and immediately return; the next step will wait
+        log_path_local = os.path.join("output", "resume.log")
+        with open(log_path_local, "w") as log_file_local:
+            proc = subprocess.Popen(
+                [
+                    "xelatex",
+                    "-interaction=nonstopmode",
+                    "-output-directory=output",
+                    "resume.tex",
+                ],
+                stdout=log_file_local,
+                stderr=subprocess.STDOUT,
+            )
+        return proc
+
+    process = run_step_with_spinner("Starting XeLaTeX...", _start_xelatex, color=GREEN)
+
+    # Step 3: Compiling...
+    def _wait_compile() -> int:
+        return process.wait() or 0
+
+    run_step_with_spinner("Compiling...", _wait_compile, color=GREEN)
+    exit_code = process.returncode or 0
     pdf_path = os.path.join("output", "resume.pdf")
 
     if exit_code == 0 and os.path.isfile(pdf_path):
+        # Step 4: Cleaning up aux files (delegate to scripts/clean.py)
+        def _clean():
+            subprocess.run(
+                [sys.executable or "python3", "scripts/clean.py"],
+                check=False,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+        run_step_with_spinner("Cleaning up auxiliary files...", _clean, color=GREEN)
+        print("")
         print(f"{GREEN}✓ CV compiled successfully to: 📄{WHITE}{pdf_path}{NC}")
-        cleanup_aux_files()
+        print("")
         return 0
     else:
         print(f"{RED}✗ Compilation failed{NC}")

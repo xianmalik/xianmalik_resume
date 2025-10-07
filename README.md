@@ -54,7 +54,7 @@ python3 -m pip install -r requirements.txt
 python3 scripts/build.py
 
 # Optional
-./scripts/clean.sh     # remove auxiliary files
+python3 scripts/clean.py    # remove auxiliary files
 ```
 
 <p align="center">
