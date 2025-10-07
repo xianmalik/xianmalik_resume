@@ -3,14 +3,14 @@
 
 .PHONY: build watch open clean deps venv
 
-BUILD_SCRIPT := ./scripts/build.sh
+BUILD_SCRIPT := ./scripts/build.py
 PDF := output/resume.pdf
 VENV_DIR := .venv
 PY := $(VENV_DIR)/bin/python3
 PIP := $(VENV_DIR)/bin/pip
 
 build: deps
-	@PATH="$(VENV_DIR)/bin:$$PATH" $(BUILD_SCRIPT)
+	@PATH="$(VENV_DIR)/bin:$$PATH" $(PY) $(BUILD_SCRIPT)
 
 deps: venv
 	@$(PY) -c "import yaml" >/dev/null 2>&1 || $(PIP) install -r requirements.txt

@@ -51,7 +51,7 @@ python3 -m pip install -r requirements.txt
 #   Linux (TeX Live): sudo apt-get install texlive-xetex texlive-fonts-recommended
 
 # 4) Build the PDF (generates cv/*.tex from data/*.yml, then compiles)
-./scripts/build.sh
+python3 scripts/build.py
 
 # Optional
 ./scripts/clean.sh     # remove auxiliary files
@@ -90,7 +90,7 @@ python3 -m pip install -r requirements.txt
 
 - **Data-driven**: Update YAML in `data/`, not TeX
 - **Clean design**: Minimal, readable Inter font setup
-- **One-command build**: `./scripts/build.sh`
+- **One-command build**: `python3 scripts/build.py`
 - **Safe generation**: Fails fast if data or PyYAML/XeLaTeX are missing
 
 <p align="center">
@@ -116,7 +116,7 @@ python3 -m pip install -r requirements.txt
 
 2) Build
 ```bash
-./scripts/build.sh
+python3 scripts/build.py
 ```
 
 3) Output

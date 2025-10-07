@@ -19,14 +19,14 @@ fi
 build_cv() {
     echo ""
     echo "🔄 [$(date '+%H:%M:%S')] File changed, rebuilding..."
-    scripts/build.sh
+    python3 scripts/build.py
     echo ""
 }
 
 # Initial build
 echo "🚀 Running initial build..."
-scripts/build.sh
-echo ""
+python3 scripts/build.py
+echo ""`
 
 # Watch for changes
 fswatch -o \
