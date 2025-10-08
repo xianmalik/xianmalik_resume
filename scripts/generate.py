@@ -225,12 +225,12 @@ skills = read_yaml("40-skills.yml")
 languages = read_yaml("50-languages.yml")
 
 outputs = {
-    "summary.tex": gen_summary(summary),
-    "experience.tex": gen_experience(experience),
-    "education.tex": gen_education(education),
-    "projects.tex": gen_projects(projects),
-    "skills.tex": gen_skills(skills),
-    "languages.tex": gen_languages(languages),
+    "00-summary.tex": gen_summary(summary),
+    "10-experience.tex": gen_experience(experience),
+    "20-education.tex": gen_education(education),
+    "30-projects.tex": gen_projects(projects),
+    "40-skills.tex": gen_skills(skills),
+    "50-languages.tex": gen_languages(languages),
 }
 
 for filename, content in outputs.items():

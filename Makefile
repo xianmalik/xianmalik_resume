@@ -21,7 +21,7 @@ venv:
 	@$(PIP) -q install --upgrade pip
 
 watch: deps
-	@PATH="$(VENV_DIR)/bin:$$PATH" ./scripts/watch.sh
+	@PATH="$(VENV_DIR)/bin:$$PATH" $(PY) ./scripts/watch.py
 
 open: build
 	@([ -f $(PDF) ] && open $(PDF)) || { echo "$(PDF) not found"; exit 1; }

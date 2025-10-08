@@ -15,11 +15,6 @@ NC = "\033[0m"
 
 
 def main() -> int:
-    print("🔍 Watching for changes in .tex/.cls, data/*.yml, and scripts/generate.py...")
-    print("📝 Will automatically rebuild when files are saved")
-    print("⏹️  Press Ctrl+C to stop watching")
-    print("")
-
     if shutil.which("fswatch") is None:
         print(f"❌ fswatch is not installed. Please install it with:\n   brew install fswatch")
         return 1
@@ -27,22 +22,40 @@ def main() -> int:
     def run_build() -> None:
         print("")
         print(f"🔄 [{subprocess.check_output(['date', '+%H:%M:%S']).decode().strip()}] File changed, rebuilding...")
-        subprocess.run([sys.executable or "python3", "scripts/build.py"], check=False)
+        subprocess.run(
+            [sys.executable or "python3", "scripts/build.py"],
+            check=False,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        print(f"{GREEN}✓ Done{NC}")
         print("")
 
     print("🚀 Running initial build...")
-    subprocess.run([sys.executable or "python3", "scripts/build.py"], check=False)
+    subprocess.run(
+        [sys.executable or "python3", "scripts/build.py"],
+        check=False,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    print("")
+
+    # Show watch information AFTER initial build completes
+    print("🔍 Watching: resume.tex, xianmalik.cls, and data/*.yml ...")
+    print("📝 Will automatically rebuild when files are saved")
+    print("⏹️  Press Ctrl+C to stop watching")
     print("")
 
     # Build fswatch command
     cmd = [
         "fswatch", "-o",
         "-e", ".*",
-        "-i", ".*\\.tex$",
-        "-i", ".*\\.cls$",
+        # Only include these
+        "-i", ".*/resume\\.tex$",
+        "-i", ".*/xianmalik\\.cls$",
         "-i", ".*/data/.*\\.yml$",
-        "-i", ".*/scripts/generate\\.py$",
-        ".", "data", "scripts/generate.py",
+        # Watch only these paths
+        "resume.tex", "xianmalik.cls", "data",
     ]
 
     with subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True) as proc:
