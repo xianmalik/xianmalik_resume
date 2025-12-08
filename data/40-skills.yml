@@ -1,25 +1,29 @@
 skills:
-  - category: Wordpress
-    items: [Themes and Plugins Development]
-  - category: Web
-    items: [HTML5, CSS, "JavaScript (vanilla, ES6)", Typescript, jQuery]
-  - category: NodeJS
-    items: [ReactJS, NextJS, VueJS, ExpressJS]
-  - category: Frameworks
-    items: [Bootstrap, TailwindCSS, "Ant Design", MaterialUI]
-  - category: CSS
+  - category: Languages & Core
+    items: [HTML5, CSS, JavaScript, NodeJS, Typescript, Python, jQuery]
+  - category: Frameworks & Libraries
+    items: [ReactJS, NextJS, VueJS, Bootstrap, TailwindCSS, "Ant Design", MaterialUI]
+  - category: Styling & Preprocessors
     items: [Stencil, Less, Scss]
-  - category: Packaging
-    items: [Webpack, Babel, Rollup, Vite]
-  - category: Others
-    items: [JWT, 0Auth, "RESTful API"]
-  - category: Database
-    items: [MySQL, MongoDB, Firebase, PostgreSQL]
-  - category: Version Management
-    items: [Git, Github]
-  - category: Technical Proficiency
-    items: [Troubleshooting, Debugging, "Unit testing", Documentation]
-  - category: Systems
+  - category: Build Tools
+    items: [Webpack, Babel, Rollup, Vite, PyYAML, "Build Automation"]
+  - category: CMS & WordPress
+    items: [Themes and Plugins Development]
+  - category: Backend & APIs
+    items: [ExpressJS, FastAPI, "RESTful API", JWT, 0Auth, Postman]
+  - category: Database & Storage
+    items: [MySQL, MongoDB, Firebase, PostgreSQL, Supabase, "Sanity Studio"]
+  - category: Testing
+    items: [Jest, Storybook]
+  - category: AI & Development
+    items: ["LLM Integration", "Prompt Engineering", "AI Agents"]
+  - category: DevOps & Cloud
+    items: [Git, Github, "GitHub Actions", AWS, Docker]
+  - category: Documentation & Tooling
+    items: [LaTeX, Markdown]
+  - category: Professional Skills
+    items: [Troubleshooting, Debugging, "Unit testing", Documentation, "Strategic Thinking", Management, Problem-solving, Teamwork]
+  - category: Project Management
+    items: [Jira, Notion, Agile, Scrum, Kanban]
+  - category: Operating Systems
     items: [MacOS, Linux, Windows]
-  - category: Soft Skills
-    items: ["Strategic Thinking", Management, Problem-solving, Teamwork]

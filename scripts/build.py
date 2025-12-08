@@ -28,7 +28,7 @@ def print_banner() -> None:
     print(f"{CYAN}╭─────────────────────────────────────────────────────────────────────╮{NC}")
     print(f"{CYAN}│{WHITE} XeLaTeX CV Builder                                                  {CYAN}│{NC}")
     print(f"{CYAN}│                                                                     │{NC}")
-    print(f"{CYAN}│{YELLOW} Compiling: {GREEN}resume.tex{WHITE} → {GREEN}output/resume.pdf                           {CYAN}│{NC}")
+    print(f"{CYAN}│{YELLOW} Compiling: {GREEN}resume.tex{WHITE} → {GREEN}dist/resume.pdf                             {CYAN}│{NC}")
     print(f"{CYAN}│{YELLOW} Engine: {BLUE}XeLaTeX{WHITE}                                                     {CYAN}│{NC}")
     print(f"{CYAN}│{YELLOW} Postbuild: {GRAY}Auto cleanup of auxiliary files after successful build   {CYAN}│{NC}")
     print(f"{CYAN}│                                                                     │{NC}")
@@ -39,7 +39,7 @@ def print_banner() -> None:
 
 
 def ensure_output_dir() -> None:
-    os.makedirs("output", exist_ok=True)
+    os.makedirs("dist", exist_ok=True)
 
 
 def check_command_exists(cmd: str) -> bool:
@@ -118,14 +118,14 @@ def run_step_with_spinner(title: str, work_fn, color: str = GREEN) -> any:
 
 
 def compile_xelatex() -> int:
-    # Run xelatex in output directory, capture output to resume.log
-    log_path = os.path.join("output", "resume.log")
+    # Run xelatex in dist directory, capture output to resume.log
+    log_path = os.path.join("dist", "resume.log")
     with open(log_path, "w") as log_file:
         process = subprocess.Popen(
             [
                 "xelatex",
                 "-interaction=nonstopmode",
-                "-output-directory=output",
+                "-output-directory=dist",
                 "resume.tex",
             ],
             stdout=log_file,
@@ -139,11 +139,11 @@ def compile_xelatex() -> int:
 
 def cleanup_aux_files() -> None:
     patterns = [
-        os.path.join("output", "*.aux"),
-        os.path.join("output", "*.log"),
-        os.path.join("output", "*.out"),
-        os.path.join("output", "*.fls"),
-        os.path.join("output", "*.fdb_latexmk"),
+        os.path.join("dist", "*.aux"),
+        os.path.join("dist", "*.log"),
+        os.path.join("dist", "*.out"),
+        os.path.join("dist", "*.fls"),
+        os.path.join("dist", "*.fdb_latexmk"),
     ]
     for pattern in patterns:
         for path in glob.glob(pattern):
@@ -164,13 +164,13 @@ def main() -> int:
     # Step 2: Starting XeLaTeX
     def _start_xelatex() -> subprocess.Popen:
         # Start and immediately return; the next step will wait
-        log_path_local = os.path.join("output", "resume.log")
+        log_path_local = os.path.join("dist", "resume.log")
         with open(log_path_local, "w") as log_file_local:
             proc = subprocess.Popen(
                 [
                     "xelatex",
                     "-interaction=nonstopmode",
-                    "-output-directory=output",
+                    "-output-directory=dist",
                     "resume.tex",
                 ],
                 stdout=log_file_local,
@@ -186,7 +186,7 @@ def main() -> int:
 
     run_step_with_spinner("Compiling...", _wait_compile, color=GREEN)
     exit_code = process.returncode or 0
-    pdf_path = os.path.join("output", "resume.pdf")
+    pdf_path = os.path.join("dist", "resume.pdf")
 
     if exit_code == 0 and os.path.isfile(pdf_path):
         # Step 4: Cleaning up aux files (delegate to scripts/clean.py)
@@ -204,7 +204,7 @@ def main() -> int:
         return 0
     else:
         print(f"{RED}✗ Compilation failed{NC}")
-        print(f"{GRAY}Check output/resume.log for details{NC}")
+        print(f"{GRAY}Check dist/resume.log for details{NC}")
         return 1
 
 

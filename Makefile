@@ -4,7 +4,7 @@
 .PHONY: build watch open clean deps venv
 
 BUILD_SCRIPT := ./scripts/build.py
-PDF := output/resume.pdf
+PDF := dist/resume.pdf
 VENV_DIR := .venv
 PY := $(VENV_DIR)/bin/python3
 PIP := $(VENV_DIR)/bin/pip

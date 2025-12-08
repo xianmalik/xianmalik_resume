@@ -77,7 +77,7 @@ python3 scripts/clean.py    # remove auxiliary files
 │   ├── 40-skills.yml
 │   └── 50-languages.yml
 ├── font/                    # Inter fonts
-├── output/                  # Built PDF output
+├── dist/                    # Built PDF output
 ├── scripts/                 # Build & generator scripts
 ├── requirements.txt         # Python deps (PyYAML)
 ├── resume.tex               # Main LaTeX file
@@ -120,7 +120,7 @@ python3 scripts/build.py
 ```
 
 3) Output
-- PDF: `output/resume.pdf`
+- PDF: `dist/resume.pdf`
 
 <p align="center">
     <h2 align="center">Customization</h2>

@@ -34,10 +34,10 @@ def main() -> int:
 
     total_removed = 0
 
-    # Output directory
-    if os.path.isdir("output"):
+    # Dist directory
+    if os.path.isdir("dist"):
         for ext in extensions:
-            matches = list(find_files([os.path.join("output", f"*.{ext}")]))
+            matches = list(find_files([os.path.join("dist", f"*.{ext}")]))
             if matches:
                 print(f"  🗑️  Removing {len(matches)} .{ext} file(s)")
                 for m in matches:
@@ -64,12 +64,12 @@ def main() -> int:
     else:
         print(f"✅ Cleaned up {total_removed} auxiliary file(s)")
 
-    if os.path.isdir("output"):
+    if os.path.isdir("dist"):
         print("")
-        print("📂 Remaining files in output/:")
-        for name in sorted(os.listdir("output")):
+        print("📂 Remaining files in dist/:")
+        for name in sorted(os.listdir("dist")):
             try:
-                path = os.path.join("output", name)
+                path = os.path.join("dist", name)
                 size = os.path.getsize(path)
                 print(f"   {name}  {size} bytes")
             except OSError:
