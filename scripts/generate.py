@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Minimal YAML → TeX generator. Reads data/*.yml and writes cv/*.tex.
+Minimal YAML → TeX generator. Reads data/*.yml and writes sections/*.tex.
 No-op if data directory or files are missing, or if PyYAML is unavailable.
 """
 from __future__ import annotations
@@ -16,9 +16,9 @@ except Exception:
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO_ROOT / "data"
-CV_DIR = REPO_ROOT / "cv"
+SECTIONS_DIR = REPO_ROOT / "sections"
 
-if not DATA_DIR.exists() or not CV_DIR.exists():
+if not DATA_DIR.exists() or not SECTIONS_DIR.exists():
     sys.exit(0)
 
 
@@ -219,23 +219,23 @@ def gen_languages(data):
 
 summary = read_yaml("00-summary.yml")
 experience = read_yaml("10-experience.yml")
-education = read_yaml("20-education.yml")
 projects = read_yaml("30-projects.yml")
 skills = read_yaml("40-skills.yml")
+education = read_yaml("20-education.yml")
 languages = read_yaml("50-languages.yml")
 
 outputs = {
     "00-summary.tex": gen_summary(summary),
     "10-experience.tex": gen_experience(experience),
-    "20-education.tex": gen_education(education),
-    "30-projects.tex": gen_projects(projects),
-    "40-skills.tex": gen_skills(skills),
-    "50-languages.tex": gen_languages(languages),
+    "20-projects.tex": gen_projects(projects),
+    "30-skills.tex": gen_skills(skills),
+    "50-education.tex": gen_education(education),
+    "60-languages.tex": gen_languages(languages),
 }
 
 for filename, content in outputs.items():
     if content:
-        write_file(CV_DIR / filename, content)
+        write_file(SECTIONS_DIR / filename, content)
 
 sys.exit(0)
 

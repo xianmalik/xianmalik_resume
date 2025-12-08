@@ -7,6 +7,7 @@ import time
 import shutil
 import subprocess
 import threading
+from pathlib import Path
 
 
 # Color definitions (ANSI)
@@ -24,11 +25,20 @@ BOLD = "\033[1m"
 ORANGE = "\033[38;5;208m"
 
 
-def print_banner() -> None:
+def read_version() -> str:
+    """Read version from VERSION file"""
+    version_file = Path("VERSION")
+    if version_file.exists():
+        return version_file.read_text().strip()
+    return "0.0.0"
+
+
+def print_banner(version: str) -> None:
     print(f"{CYAN}╭─────────────────────────────────────────────────────────────────────╮{NC}")
     print(f"{CYAN}│{WHITE} XeLaTeX CV Builder                                                  {CYAN}│{NC}")
     print(f"{CYAN}│                                                                     │{NC}")
-    print(f"{CYAN}│{YELLOW} Compiling: {GREEN}resume.tex{WHITE} → {GREEN}dist/resume.pdf                             {CYAN}│{NC}")
+    print(f"{CYAN}│{YELLOW} Version: {GREEN}v{version}{WHITE}                                                       {CYAN}│{NC}")
+    print(f"{CYAN}│{YELLOW} Compiling: {GREEN}resume.tex{WHITE} → {GREEN}dist/resume-v{version}.pdf{WHITE}                    {CYAN}│{NC}")
     print(f"{CYAN}│{YELLOW} Engine: {BLUE}XeLaTeX{WHITE}                                                     {CYAN}│{NC}")
     print(f"{CYAN}│{YELLOW} Postbuild: {GRAY}Auto cleanup of auxiliary files after successful build   {CYAN}│{NC}")
     print(f"{CYAN}│                                                                     │{NC}")
@@ -154,7 +164,8 @@ def cleanup_aux_files() -> None:
 
 
 def main() -> int:
-    print_banner()
+    version = read_version()
+    print_banner(version)
     ensure_output_dir()
     # Step 1: Generate TeX from YAML (if possible)
     def _maybe_generate():
@@ -187,8 +198,12 @@ def main() -> int:
     run_step_with_spinner("Compiling...", _wait_compile, color=GREEN)
     exit_code = process.returncode or 0
     pdf_path = os.path.join("dist", "resume.pdf")
+    versioned_pdf_path = os.path.join("dist", f"resume-v{version}.pdf")
 
     if exit_code == 0 and os.path.isfile(pdf_path):
+        # Rename to versioned filename
+        shutil.copy2(pdf_path, versioned_pdf_path)
+
         # Step 4: Cleaning up aux files (delegate to scripts/clean.py)
         def _clean():
             subprocess.run(
@@ -199,7 +214,8 @@ def main() -> int:
             )
         run_step_with_spinner("Cleaning up auxiliary files...", _clean, color=GREEN)
         print("")
-        print(f"{GREEN}✓ CV compiled successfully to: 📄{WHITE}{pdf_path}{NC}")
+        print(f"{GREEN}✓ CV compiled successfully to: 📄{WHITE}{versioned_pdf_path}{NC}")
+        print(f"{GRAY}  (Also available at: {pdf_path}){NC}")
         print("")
         return 0
     else:

@@ -4,9 +4,12 @@ positions:
     location: Hybrid - Dhaka, Bangladesh
     dates: January 2025 - Present
     items:
-      - Developed industry-grade machine controller software using Next.js, delivering real-time and historical data visualization for manufacturing operations.
-      - Integrated WebSocket and REST API endpoints to process and display both live and stored machine data.
-      - Implemented a Material Design system with Tailwind CSS to ensure a consistent, responsive, and user-friendly interface.
+      - Led frontend development for an ML/AI-powered telecom network optimization platform, architecting a scalable dashboard solution using Next.js, shadcn/ui, Tailwind CSS, and Zustand for state management.
+      - Designed and implemented advanced data visualization features with interactive charts and diagrams to display real-time network performance metrics and ML model predictions for network operators.
+      - Integrated REST API endpoints to collect, push, and manage large-scale telecom network data with efficient caching strategies and optimized data fetching patterns.
+      - Applied frontend optimization techniques including code splitting, lazy loading, and memoization to ensure smooth performance when handling complex network datasets and AI-generated insights.
+      - Developed industry-grade machine controller software delivering real-time and historical data visualization for manufacturing operations using Next.js and WebSocket integration.
+      - Established component architecture and design system standards, ensuring scalability and maintainability across multiple dashboard applications.
   - title: Contractual & Part time
     company: Freelance Web Engineer
     location: Remote - Dhaka, Bangladesh

@@ -28,16 +28,16 @@ projects:
     url: https://www.plume.com
     urlLabel: www.plume.com
 
-  - name: SHOPENGINE
-    subtitle: Woocommerce Template Builder
-    items:
-      - Developed a front-end shopping widget builder using PHP within the Elementor framework, improving user experience for over 40,000 active users.
-      - Enhanced customization options, leading to a significant increase in user engagement and satisfaction.
-    tech:
-      - PHP
-      - ReactJS
-      - Ant Design
-      - Redux
-      - REST APIs
-    url: https://wordpress.org/plugins/shopengine/
-    urlLabel: https://wordpress.org/plugins/shopengine/
+#   - name: SHOPENGINE
+#     subtitle: Woocommerce Template Builder
+#     items:
+#       - Developed a front-end shopping widget builder using PHP within the Elementor framework, improving user experience for over 40,000 active users.
+#       - Enhanced customization options, leading to a significant increase in user engagement and satisfaction.
+#     tech:
+#       - PHP
+#       - ReactJS
+#       - Ant Design
+#       - Redux
+#       - REST APIs
+#     url: https://wordpress.org/plugins/shopengine/
+#     urlLabel: https://wordpress.org/plugins/shopengine/

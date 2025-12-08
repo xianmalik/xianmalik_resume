@@ -3,8 +3,9 @@
 </p>
 
 <p align="center">
-    <img alt="Version" src="https://img.shields.io/badge/Version-2.0.0-pink?style=for-the-badge&labelColor=302D41&logo=git&logoColor=D9E0EE">
+    <img alt="Version" src="https://img.shields.io/badge/Version-1.1.0-pink?style=for-the-badge&labelColor=302D41&logo=git&logoColor=D9E0EE">
 </p>
+
 <p align="center">
     Professional LaTeX CV Template powered by XeLaTeX & Inter Font Family
 </p>
@@ -62,13 +63,13 @@ python3 scripts/clean.py    # remove auxiliary files
 </p>
 
 ```
-├── cv/                      # GENERATED TeX sections (do not edit)
-│   ├── summary.tex
-│   ├── experience.tex
-│   ├── education.tex
-│   ├── projects.tex
-│   ├── skills.tex
-│   └── languages.tex
+├── sections/                # GENERATED TeX sections (do not edit)
+│   ├── 00-summary.tex
+│   ├── 10-experience.tex
+│   ├── 20-education.tex
+│   ├── 30-projects.tex
+│   ├── 40-skills.tex
+│   └── 50-languages.tex
 ├── data/                    # Source data (edit these)
 │   ├── 00-summary.yml
 │   ├── 10-experience.yml
@@ -106,7 +107,7 @@ python3 scripts/clean.py    # remove auxiliary files
     <h2 align="center">Usage</h2>
 </p>
 
-1) Edit your data only (do not edit `cv/*.tex`)
+1) Edit your data only (do not edit `sections/*.tex`)
    - `data/00-summary.yml`
    - `data/10-experience.yml`
    - `data/20-education.yml`
@@ -129,7 +130,7 @@ python3 scripts/build.py
 - **Colors**: Edit accent/text colors in `xianmalik.cls`
 - **Fonts**: Adjust Inter weights in `xianmalik.cls`
 - **Layout**: Tune geometry and spacing in `resume.tex` / class
-- **Content**: Edit YAML in `data/` (generator writes `cv/*.tex`)
+- **Content**: Edit YAML in `data/` (generator writes `sections/*.tex`)
 
 <p align="center">
     <h2 align="center">License</h2>
