@@ -37,8 +37,15 @@ def write_file(path: Path, content: str) -> None:
 
 
 def latex_escape(s: str) -> str:
-    return (
-        str(s)
+    # First, handle any special formatting patterns by converting them to temporary placeholders
+    s = str(s)
+    # Support for bold formatting using [[bold text]] pattern
+    # Use temporary placeholders that are unlikely to appear in normal text and contain no special characters
+    s = s.replace("[[", "BOLDSTART9E8F7A").replace("]]", "BOLDEND9E8F7A")
+
+    # Now escape all LaTeX special characters
+    s = (
+        s
         .replace("\\", "\\textbackslash{}")
         .replace("%", "\\%")
         .replace("&", "\\&")
@@ -48,6 +55,11 @@ def latex_escape(s: str) -> str:
         .replace("}", "\\}")
         .replace("$", "\\$")
     )
+
+    # Finally, convert the temporary placeholders back to LaTeX bold commands
+    s = s.replace("BOLDSTART9E8F7A", "\\textbf{").replace("BOLDEND9E8F7A", "}")
+
+    return s
 
 
 def gen_summary(data):

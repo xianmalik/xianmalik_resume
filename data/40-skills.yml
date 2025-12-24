@@ -1,10 +1,10 @@
 skills:
   - category: Languages & Core
-    items: [HTML5, CSS, JavaScript, NodeJS, Typescript, Python, jQuery]
+    items: [HTML5, CSS, JavaScript, NodeJS, Typescript, Python]
   - category: Frameworks & Libraries
-    items: [ReactJS, NextJS, VueJS, Bootstrap, TailwindCSS, "Ant Design", MaterialUI]
+    items: [ReactJS, NextJS, VueJS, jQuery]
   - category: Styling & Preprocessors
-    items: [Stencil, Less, Scss]
+    items: ["Scss & Less", Bootstrap, "Ant Design", MaterialUI, "Shadcn/ui", TailwindCSS]
   - category: Build Tools
     items: [Webpack, Babel, Rollup, Vite, PyYAML, "Build Automation"]
   - category: CMS & WordPress
@@ -19,7 +19,7 @@ skills:
     items: ["LLM Integration", "Prompt Engineering", "AI Agents"]
   - category: DevOps & Cloud
     items: [Git, Github, "GitHub Actions", AWS, Docker]
-  - category: Documentation & Tooling
+  - category: Documentation
     items: [LaTeX, Markdown]
   - category: Professional Skills
     items: [Troubleshooting, Debugging, "Unit testing", Documentation, "Strategic Thinking", Management, Problem-solving, Teamwork]
