@@ -6,19 +6,19 @@ skills:
   - category: Styling & Preprocessors
     items: ["Scss & Less", Bootstrap, "Ant Design", MaterialUI, "Shadcn/ui", TailwindCSS]
   - category: Build Tools
-    items: [Webpack, Babel, Rollup, Vite, PyYAML, "Build Automation"]
+    items: [Webpack, Babel, Rollup, Vite]
   - category: CMS & WordPress
     items: [Themes and Plugins Development]
   - category: Backend & APIs
-    items: [ExpressJS, FastAPI, "RESTful API", JWT, 0Auth, Postman]
+    items: [ExpressJS, FastAPI, "RESTful API", Webhooks, WebSockets, SDK, JWT, OAuth, Postman]
   - category: Database & Storage
-    items: [MySQL, MongoDB, Firebase, PostgreSQL, Supabase, "Sanity Studio"]
+    items: [MySQL, MongoDB, Firebase, PostgreSQL, Supabase, SanityStudio]
   - category: Testing
     items: [Jest, Storybook]
-  - category: AI & Development
-    items: ["LLM Integration", "Prompt Engineering", "AI Agents"]
+  - category: AI & Machine Learning
+    items: ["Agentic AI", "MCP (Model Context Protocol)", "LLM Integration", "Prompt Engineering"]
   - category: DevOps & Cloud
-    items: [Git, Github, "GitHub Actions", AWS, Docker]
+    items: [Git, Github, "GitHub Actions", "CI/CD Pipelines", AWS, Docker, "Deployment Automation"]
   - category: Documentation
     items: [LaTeX, Markdown]
   - category: Professional Skills

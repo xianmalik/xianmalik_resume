@@ -4,12 +4,12 @@ positions:
     location: Hybrid - Dhaka, Bangladesh
     dates: January 2025 - Present
     items:
-      - Led frontend development for an ML/AI-powered telecom network optimization platform, architecting a scalable dashboard solution using Next.js, shadcn/ui, Tailwind CSS, and Zustand for state management.
-      - Designed and implemented advanced data visualization features with interactive charts and diagrams to display real-time network performance metrics and ML model predictions for network operators.
-      - Integrated REST API endpoints to collect, push, and manage large-scale telecom network data with efficient caching strategies and optimized data fetching patterns.
-      - Applied frontend optimization techniques including code splitting, lazy loading, and memoization to ensure smooth performance when handling complex network datasets and AI-generated insights.
-      - Developed industry-grade machine controller software delivering real-time and historical data visualization for manufacturing operations using Next.js and WebSocket integration.
-      - Established component architecture and design system standards, ensuring scalability and maintainability across multiple dashboard applications.
+      - Developed frontend architecture for an ML/AI-powered telecom network optimization platform, integrating RESTful APIs for user authentication, tenant management, resource management, and AWS S3 bucket operations to enable secure multi-tenant data access and storage.
+      - Built interactive dashboards with real-time optimization graph visualizations using modern frontend frameworks, presenting complex network performance metrics.
+      - Implemented comprehensive API integration layer connecting frontend application with backend workflow services, enabling seamless data flow between user interactions and ML inference pipelines for network optimization insights.
+      - Engineered frontend infrastructure using Docker containerization, implementing build optimization and deployment strategies that ensured consistent development and production environments across AWS cloud infrastructure.
+      - Developed reusable component libraries and state management solutions for handling complex data visualization requirements, improving development velocity and maintaining consistent UI/UX patterns across the platform.
+      - Integrated AWS S3 SDK for client-side file upload workflows with progress tracking and error handling, optimizing large dataset transfers between frontend application and cloud storage infrastructure.
   - title: Contractual & Part time
     company: Freelance Web Engineer
     location: Remote - Dhaka, Bangladesh
